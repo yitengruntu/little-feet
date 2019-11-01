@@ -8,7 +8,17 @@ module.exports = {
   ],
   globals: {
     Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly'
+    SharedArrayBuffer: 'readonly',
+    __DEV__: true,
+    __WECHAT__: true,
+    __ALIPAY__: true,
+    App: true,
+    Page: true,
+    Component: true,
+    Behavior: true,
+    wx: true,
+    getApp: true,
+    getCurrentPages: true
   },
   parserOptions: {
     ecmaVersion: 2018,

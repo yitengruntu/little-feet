@@ -7,26 +7,25 @@ Page({
   data: {
     fileID: '',
     cloudPath: '',
-    imagePath: '',
+    imagePath: ''
   },
 
   onLoad: function (options) {
-
     const {
       fileID,
       cloudPath,
-      imagePath,
+      imagePath
     } = app.globalData
 
     this.setData({
       fileID,
       cloudPath,
-      imagePath,
+      imagePath
     })
 
     console.group('文件存储文档')
     console.log('https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/storage.html')
     console.groupEnd()
-  },
+  }
 
 })

@@ -9,7 +9,7 @@ Page({
 
   },
 
-  onCustomerServiceButtonClick(e) {
+  onCustomerServiceButtonClick (e) {
     console.log(e)
-  },
+  }
 })

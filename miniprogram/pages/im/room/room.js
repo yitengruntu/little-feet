@@ -1,4 +1,4 @@
-const app = getApp()
+// const app = getApp()
 
 Page({
   data: {
@@ -14,10 +14,10 @@ Page({
 
     // functions for used in chatroom components
     onGetUserInfo: null,
-    getOpenID: null,
+    getOpenID: null
   },
 
-  onLoad: function() {
+  onLoad: function () {
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -37,7 +37,7 @@ Page({
 
     this.setData({
       onGetUserInfo: this.onGetUserInfo,
-      getOpenID: this.getOpenID,
+      getOpenID: this.getOpenID
     })
 
     wx.getSystemInfo({
@@ -46,26 +46,26 @@ Page({
         if (res.safeArea) {
           const { top, bottom } = res.safeArea
           this.setData({
-            containerStyle: `padding-top: ${(/ios/i.test(res.system) ? 10 : 20) + top}px; padding-bottom: ${20 + res.windowHeight - bottom}px`,
+            containerStyle: `padding-top: ${(/ios/i.test(res.system) ? 10 : 20) + top}px; padding-bottom: ${20 + res.windowHeight - bottom}px`
           })
         }
-      },
+      }
     })
   },
 
-  getOpenID: async function() {
+  getOpenID: async function () {
     if (this.openid) {
       return this.openid
     }
 
     const { result } = await wx.cloud.callFunction({
-      name: 'login',
+      name: 'login'
     })
 
     return result.openid
   },
 
-  onGetUserInfo: function(e) {
+  onGetUserInfo: function (e) {
     if (!this.logged && e.detail.userInfo) {
       this.setData({
         logged: true,
@@ -75,10 +75,10 @@ Page({
     }
   },
 
-  onShareAppMessage() {
+  onShareAppMessage () {
     return {
       title: '即时通信 Demo',
-      path: '/pages/im/room/room',
+      path: '/pages/im/room/room'
     }
-  },
+  }
 })

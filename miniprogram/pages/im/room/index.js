@@ -1,5 +1,5 @@
-//index.js
-const app = getApp()
+// index.js
+// const app = getApp()
 
 Page({
   data: {
@@ -15,10 +15,10 @@ Page({
 
     // functions for used in chatroom components
     onGetUserInfo: null,
-    getOpenID: null,
+    getOpenID: null
   },
 
-  onLoad: function() {
+  onLoad: function () {
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -38,7 +38,7 @@ Page({
 
     this.setData({
       onGetUserInfo: this.onGetUserInfo,
-      getOpenID: this.getOpenID,
+      getOpenID: this.getOpenID
     })
 
     wx.getSystemInfo({
@@ -47,14 +47,14 @@ Page({
         if (res.safeArea) {
           const { top, bottom } = res.safeArea
           this.setData({
-            containerStyle: `padding-top: ${(/ios/i.test(res.system) ? 10 : 20) + top}px; padding-bottom: ${20 + res.windowHeight - bottom}px`,
+            containerStyle: `padding-top: ${(/ios/i.test(res.system) ? 10 : 20) + top}px; padding-bottom: ${20 + res.windowHeight - bottom}px`
           })
         }
-      },
+      }
     })
   },
 
-  getOpenID: async function() {
+  getOpenID: async function () {
     if (this.openid) {
       return this.openid
     }
@@ -62,14 +62,14 @@ Page({
     const { result } = await wx.cloud.callFunction({
       name: 'login',
       config: {
-        env: 'release-f8415a',
-      },
+        env: 'release-f8415a'
+      }
     })
 
     return result.openid
   },
 
-  onGetUserInfo: function(e) {
+  onGetUserInfo: function (e) {
     if (!this.logged && e.detail.userInfo) {
       this.setData({
         logged: true,
@@ -79,10 +79,10 @@ Page({
     }
   },
 
-  onShareAppMessage() {
+  onShareAppMessage () {
     return {
       title: '深夜话题',
-      path: '/pages/index/index',
+      path: '/pages/index/index'
     }
-  },
+  }
 })

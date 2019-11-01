@@ -9,7 +9,7 @@ Page({
     counterId: '',
     openid: '',
     count: null,
-    queryResult: '',
+    queryResult: ''
   },
 
   onLoad: function (options) {
@@ -47,7 +47,7 @@ Page({
     // })
   },
 
-  onQuery: function() {
+  onQuery: function () {
     // const db = wx.cloud.database()
     // // 查询当前用户所有的 counters
     // db.collection('counters').where({
@@ -69,7 +69,7 @@ Page({
     // })
   },
 
-  onCounterInc: function() {
+  onCounterInc: function () {
     // const db = wx.cloud.database()
     // const newCount = this.data.count + 1
     // db.collection('counters').doc(this.data.counterId).update({
@@ -88,7 +88,7 @@ Page({
     // })
   },
 
-  onCounterDec: function() {
+  onCounterDec: function () {
     // const db = wx.cloud.database()
     // const newCount = this.data.count - 1
     // db.collection('counters').doc(this.data.counterId).update({
@@ -107,7 +107,7 @@ Page({
     // })
   },
 
-  onRemove: function() {
+  onRemove: function () {
     // if (this.data.counterId) {
     //   const db = wx.cloud.database()
     //   db.collection('counters').doc(this.data.counterId).remove({
@@ -151,13 +151,13 @@ Page({
         fail: err => {
           wx.showToast({
             icon: 'none',
-            title: '获取 openid 失败，请检查是否有部署 login 云函数',
+            title: '获取 openid 失败，请检查是否有部署 login 云函数'
           })
           console.log('[云函数] [login] 获取 openid 失败，请检查是否有部署云函数，错误信息：', err)
         }
       })
     } else {
-      const callback = this.data.step !== 6 ? function() {} : function() {
+      const callback = this.data.step !== 6 ? function () {} : function () {
         console.group('数据库文档')
         console.log('https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/database.html')
         console.groupEnd()
@@ -175,17 +175,17 @@ Page({
     })
   },
 
-  goHome: function() {
+  goHome: function () {
     const pages = getCurrentPages()
     if (pages.length === 2) {
       wx.navigateBack()
     } else if (pages.length === 1) {
       wx.redirectTo({
-        url: '../index/index',
+        url: '../index/index'
       })
     } else {
       wx.reLaunch({
-        url: '../index/index',
+        url: '../index/index'
       })
     }
   }
