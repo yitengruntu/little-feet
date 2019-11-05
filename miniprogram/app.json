@@ -1,18 +1,20 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
-    "pages/openapi/openapi",
-    "pages/openapi/serverapi/serverapi",
-    "pages/openapi/callback/callback",
-    "pages/openapi/cloudid/cloudid",
-    "pages/im/im",
-    "pages/im/room/room"
+    "pages/todoList/index/index",
+    "pages/cloudQuickStart/index/index",
+    "pages/cloudQuickStart/userConsole/userConsole",
+    "pages/cloudQuickStart/storageConsole/storageConsole",
+    "pages/cloudQuickStart/databaseGuide/databaseGuide",
+    "pages/cloudQuickStart/addFunction/addFunction",
+    "pages/cloudQuickStart/deployFunctions/deployFunctions",
+    "pages/cloudQuickStart/chooseLib/chooseLib",
+    "pages/cloudQuickStart/openapi/openapi",
+    "pages/cloudQuickStart/openapi/serverapi/serverapi",
+    "pages/cloudQuickStart/openapi/callback/callback",
+    "pages/cloudQuickStart/openapi/cloudid/cloudid",
+    "pages/cloudQuickStart/im/im",
+    "pages/cloudQuickStart/im/room/room"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -21,5 +23,14 @@
     "navigationBarTitleText": "云开发 QuickStart",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-row": "vant-weapp/row/index",
+    "van-col": "vant-weapp/col/index",
+    "van-cell": "vant-weapp/cell/index",
+    "van-cell-group": "vant-weapp/cell-group/index",
+    "van-swipe-cell": "vant-weapp/swipe-cell/index",
+    "van-button": "vant-weapp/button/index",
+    "van-icon": "vant-weapp/icon/index"
+  }
 }

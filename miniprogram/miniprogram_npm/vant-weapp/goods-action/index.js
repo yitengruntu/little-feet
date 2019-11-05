@@ -1,5 +1,5 @@
-import { VantComponent } from '../common/component'
-import { safeArea } from '../mixins/safe-area'
+import { VantComponent } from '../common/component';
+import { safeArea } from '../mixins/safe-area';
 VantComponent({
-  mixins: [safeArea()]
-})
+    mixins: [safeArea()]
+});

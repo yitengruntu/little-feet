@@ -1,0 +1,44 @@
+.slide-width-btn {
+  width: 65px;
+}
+
+.input-container {
+  background: #ffffff;
+  margin: 30rpx;
+  border-radius: 4px;
+  height: 44px;
+  padding: 24rpx 100rpx 24rpx 24rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.add-btn {
+  position: absolute;
+  top: 50%;
+  right: 5rpx;
+  transform: translateY(-50%);
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+}
+
+.circle {
+  width: 16px;
+  height: 16px;
+  border: 1px #999 solid;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.checked {
+  font-size: 24px;
+  margin-right: 8px;
+  color: #1aad19;
+}
+
+.invalid {
+  text-decoration: line-through;
+  color: #999;
+}
