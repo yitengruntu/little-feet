@@ -7,10 +7,16 @@ cloud.init({
 const db = cloud.database()
 // console.log('db init----->', db)
 
-exports.main = async (event, context) => {
-  console.log(event)
-  console.log(context)
-  const todos = await db.collection('todos').get()
-  console.log(todos)
-  return todos
+exports.main = async ({ offset }, context) => {
+  try {
+    const todos = await db.collection('todos')
+      .orderBy('createdAt', 'desc')
+      .limit(20)
+      .skip(offset || 0)
+      .get()
+    return todos
+  } catch (e) {
+    console.log(e)
+  }
+
 }

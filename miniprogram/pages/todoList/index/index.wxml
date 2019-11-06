@@ -1,15 +1,23 @@
 <view>
-  <view class="input-container">
-    <input bindinput="onInputChange" maxlength="16" value="{{}}" />
-    <button class="add-btn" bindtap="addTodo">→</button>
+  <view class="input-wrapper">
+    <view class="input-container">
+      <input bindinput="onInputChange" maxlength="16" value="{{ inputValue }}" bindconfirm="addTodo" />
+      <button class="add-btn" bindtap="addTodo">→</button>
+    </view>
   </view>
-  <van-cell-group>
-    <van-cell wx:for="{{ list }}" wx:key="{{ index }}" value="{{ item.done }}">
-      <view slot="title" class="title-container">
-        <view wx:if="{{ !item.done }}" class="circle" bindtap="finishTodo" id="{{ item._id }}"></view>
-        <van-icon class="checked" wx:else name="success" />
-        <view class="{{item.done ? 'invalid' : ''}}">{{ item.message || '无效数据'}}</view>
-      </view>
-    </van-cell>
-  </van-cell-group>
+  <view id="scroll-container">
+    <view class="loading-container">
+      <view class="loading">下拉刷新</view>
+    </view>
+    <van-cell-group>
+      <van-cell wx:for="{{ list }}" wx:key="{{ index }}" value="{{ item.createdTime }}" value-class="no-flex-container">
+        <view slot="title" class="title-container">
+          <view wx:if="{{ !item.done }}" class="circle" bindtap="finishTodo" id="{{ item._id }}"></view>
+          <van-icon class="checked" wx:else name="success" />
+          <view class="{{item.done ? 'invalid' : ''}}">{{ item.message || '无效数据'}}</view>
+        </view>
+      </van-cell>
+    </van-cell-group>
+  </view>
+  <van-toast id="van-toast" />
 </view>

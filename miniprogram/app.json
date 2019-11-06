@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/todoList/index/index",
+    "pages/index/index",
     "pages/cloudQuickStart/index/index",
     "pages/cloudQuickStart/userConsole/userConsole",
     "pages/cloudQuickStart/storageConsole/storageConsole",
@@ -20,7 +20,7 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTitleText": "老金's Lab",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
@@ -31,6 +31,7 @@
     "van-cell-group": "vant-weapp/cell-group/index",
     "van-swipe-cell": "vant-weapp/swipe-cell/index",
     "van-button": "vant-weapp/button/index",
-    "van-icon": "vant-weapp/icon/index"
+    "van-icon": "vant-weapp/icon/index",
+    "van-toast": "vant-weapp/toast/index"
   }
 }

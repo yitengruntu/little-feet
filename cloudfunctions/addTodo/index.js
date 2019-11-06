@@ -12,7 +12,8 @@ exports.main = async ({ message }, context) => {
     const todos = await db.collection('todos').add({
       data: {
         message,
-        done: false
+        done: false,
+        createdAt: db.serverDate()
       }
     })
     console.log(todos)

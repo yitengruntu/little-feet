@@ -2,6 +2,15 @@
   width: 65px;
 }
 
+.input-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: #f6f6f6;
+  right: 0;
+}
+
 .input-container {
   background: #ffffff;
   margin: 30rpx;
@@ -12,11 +21,37 @@
   position: relative;
 }
 
+.scroll {
+  overflow:auto;
+  margin:auto;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+}
+
+.loading-container {
+  height: 74px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading {
+  color: #999;
+}
+
 .add-btn {
   position: absolute;
   top: 50%;
   right: 5rpx;
   transform: translateY(-50%);
+}
+
+.no-flex-container {
+  flex: none !important;
 }
 
 .title-container {
@@ -33,9 +68,10 @@
 }
 
 .checked {
-  font-size: 24px;
+  font-size: 16px;
   margin-right: 8px;
   color: #1aad19;
+  line-height: 24px;
 }
 
 .invalid {
