@@ -1,4 +1,20 @@
 <view>
+  <view wx:if="{{ authStatus !== 2 }}" class="login-container">
+    <van-button
+      open-type="getUserInfo"
+      color="#ff79c6"
+      bind:getuserinfo="onGetUserInfo"
+      loading="{{ authStatus === 3 }}"
+      loading-text="稍等..."
+      wx:if="{{ authStatus === 0 || authStatus === 3 }}"
+    >
+      点击登录
+    </van-button>
+    <view class="no-auth-container" wx:if="{{ authStatus === 1 }}">
+      <van-icon name="smile" />
+      <view>没有权限</view>
+    </view>
+  </view>
   <view class="input-wrapper">
     <view class="input-container">
       <input bindinput="onInputChange" maxlength="16" value="{{ inputValue }}" bindconfirm="addTodo" />

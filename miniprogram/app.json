@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/todoList/index/index",
+    "pages/index/index",
     "pages/cloudQuickStart/index/index",
     "pages/cloudQuickStart/userConsole/userConsole",
     "pages/cloudQuickStart/storageConsole/storageConsole",

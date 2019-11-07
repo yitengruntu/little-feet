@@ -1,6 +1,8 @@
 // app.js
+import pro from './utils/promisifyWx'
+
 App({
-  onLaunch: function () {
+  onLaunch: async function () {
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
@@ -13,7 +15,19 @@ App({
         traceUser: true
       })
     }
-
-    this.globalData = {}
+    let userInfo = {}
+    const { authSetting } = await pro.getSetting()
+    if (authSetting['scope.userInfo']) {
+      const res = await pro.getUserInfo()
+      if (res.userInfo) {
+        userInfo = {
+          rawData: res.rawData,
+          ...res.userInfo
+        }
+      }
+    }
+    this.globalData = {
+      userInfo
+    }
   }
 })

@@ -9,11 +9,13 @@ const db = cloud.database()
 exports.main = async ({ message }, context) => {
   try {
     if (!message) return
+    const wxContext = cloud.getWXContext()
     const todos = await db.collection('todos').add({
       data: {
         message,
         done: false,
-        createdAt: db.serverDate()
+        createdAt: db.serverDate(),
+        createdBy: wxContext.OPENID
       }
     })
     console.log(todos)

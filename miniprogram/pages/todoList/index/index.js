@@ -1,6 +1,15 @@
 import dayjs from 'dayjs'
 import Toast from 'vant-weapp/toast/toast'
 import pro from '../../../utils/promisifyWx'
+const app = getApp()
+
+/**
+ *  authStatus
+ *  0: 没有登录
+ *  1: 没有权限
+ *  2: 成功
+ *  3: loading
+ */
 
 Page({
   data: {
@@ -10,14 +19,23 @@ Page({
     noMore: false,
     viewHeight: 0,
     activeTab: 'todo',
-    safeBottom: 0
+    safeBottom: 0,
+    authStatus: 0,
+    logged: false
   },
-  onLoad () {
+  async onLoad () {
     if (!wx.cloud) {
       return
     }
-    this.setSafeBottom()
-    this.getList()
+    const userInfo = await this.getUserInfo()
+    if (userInfo) {
+      await this.updateUserInfo(userInfo)
+      this.setData({ logged: true })
+    }
+    if (this.data.authStatus === 2) {
+      this.setSafeBottom()
+      this.getList()
+    }
   },
   onPullDownRefresh () {
     pro.stopPullDownRefresh()
@@ -36,6 +54,26 @@ Page({
       path: '/pages/todoList/index/index',
       imageUrl: '../../../images/todos-cover.png'
     }
+  },
+  async getUserInfo () {
+    const { authSetting } = await pro.getSetting()
+    if (authSetting['scope.userInfo']) {
+      const { rawData, userInfo } = await pro.getUserInfo()
+      return { rawData, ...userInfo }
+    }
+    return null
+  },
+  async updateUserInfo (userInfo) {
+    this.setData({
+      authStatus: 3
+    })
+    const { result: { authed } } = await wx.cloud.callFunction({
+      name: 'updateUserInfo',
+      data: userInfo
+    })
+    this.setData({
+      authStatus: authed ? 2 : 1
+    })
   },
   async setSafeBottom () {
     const { screenHeight, safeArea: { bottom }} = await pro.getSystemInfo()
@@ -103,5 +141,11 @@ Page({
       activeTab: e.detail
     })
     this.getList()
+  },
+  onGetUserInfo (e) {
+    console.log(e.detail)
+    const { rawData, userInfo } = e.detail
+    if (!userInfo) return
+    this.updateUserInfo({ rawData, ...userInfo })
   }
 })

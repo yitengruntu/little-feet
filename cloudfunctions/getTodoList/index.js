@@ -8,6 +8,8 @@ const db = cloud.database()
 // console.log('db init----->', db)
 
 exports.main = async ({ offset, all }, context) => {
+  let { OPENID, APPID, UNIONID } = cloud.getWXContext()
+  console.log(OPENID, APPID, UNIONID)
   try {
     const params = {}
     if (!all) params.done = false
