@@ -30,6 +30,13 @@ Page({
       this.getList(this.data.list.length)
     }
   },
+  onShareAppMessage () {
+    return {
+      title: '老金待办清单',
+      path: '/pages/todoList/index/index',
+      imageUrl: '../../../images/todos-cover.png'
+    }
+  },
   async setSafeBottom () {
     const { screenHeight, safeArea: { bottom }} = await pro.getSystemInfo()
     this.setData({
