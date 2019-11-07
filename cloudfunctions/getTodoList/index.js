@@ -7,9 +7,12 @@ cloud.init({
 const db = cloud.database()
 // console.log('db init----->', db)
 
-exports.main = async ({ offset }, context) => {
+exports.main = async ({ offset, all }, context) => {
   try {
+    const params = {}
+    if (!all) params.done = false
     const todos = await db.collection('todos')
+      .where(params)
       .orderBy('createdAt', 'desc')
       .limit(20)
       .skip(offset || 0)

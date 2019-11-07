@@ -8,12 +8,15 @@ Page({
     inputValue: '',
     loading: false,
     noMore: false,
-    viewHeight: 0
+    viewHeight: 0,
+    activeTab: 'todo',
+    safeBottom: 0
   },
   onLoad () {
     if (!wx.cloud) {
       return
     }
+    this.setSafeBottom()
     this.getList()
   },
   onPullDownRefresh () {
@@ -27,6 +30,12 @@ Page({
       this.getList(this.data.list.length)
     }
   },
+  async setSafeBottom () {
+    const { screenHeight, safeArea: { bottom }} = await pro.getSystemInfo()
+    this.setData({
+      safeBottom: screenHeight - bottom
+    })
+  },
   async getList (offset) {
     Toast.loading({
       message: '加载中',
@@ -35,7 +44,10 @@ Page({
     this.setData({ loading: true })
     const { result: { data } } = await wx.cloud.callFunction({
       name: 'getTodoList',
-      data: { offset }
+      data: {
+        offset,
+        all: this.data.activeTab === 'all'
+      }
     })
     const list = offset
       ? this.data.list.concat(data)
@@ -77,5 +89,12 @@ Page({
     this.setData({
       inputValue: e.detail.value
     })
+  },
+  onTabChange (e) {
+    console.log('tab change', e.detail)
+    this.setData({
+      activeTab: e.detail
+    })
+    this.getList()
   }
 })
