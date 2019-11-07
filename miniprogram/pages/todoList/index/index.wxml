@@ -17,7 +17,7 @@
   </view>
   <view class="input-wrapper">
     <view class="input-container">
-      <input bindinput="onInputChange" maxlength="16" value="{{ inputValue }}" bindconfirm="addTodo" />
+      <input bindinput="onInputChange" maxlength="32" value="{{ inputValue }}" bindconfirm="addTodo" />
       <button class="add-btn" bindtap="addTodo">→</button>
     </view>
   </view>
@@ -30,6 +30,7 @@
         <view slot="title" class="title-container">
           <view wx:if="{{ !item.done }}" class="circle" bindtap="finishTodo" id="{{ item._id }}"></view>
           <van-icon class="checked" wx:else name="success" />
+          <image class="avatar" src="{{ item.avatarUrl }}" />
           <view class="{{ item.done ? 'invalid' : '' }}">{{ item.message || '无效数据' }}</view>
         </view>
       </van-cell>

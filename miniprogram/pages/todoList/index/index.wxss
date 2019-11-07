@@ -80,7 +80,6 @@
   left: 0;
   right: 0;
   background: #282a36;
-  opacity: .95;
   z-index: 100;
   display: flex;
   align-items: center;
@@ -94,4 +93,11 @@
   justify-content: center;
   flex-direction: column;
   color: #ffffff;
+}
+
+.avatar {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  margin-right: 8px;
 }

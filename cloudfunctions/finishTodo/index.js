@@ -6,13 +6,16 @@ const db = cloud.database()
 const _ = db.command
 exports.main = async ({ id }, context) => {
   try {
+    const wxContext = cloud.getWXContext()
     return await db.collection('todos')
       .where({
         _id: id
       })
     .update({
       data: {
-        done: true
+        done: true,
+        finishedAt: db.serverDate(),
+        finishedBy: wxContext.OPENID
       }
     })
   } catch (e) {

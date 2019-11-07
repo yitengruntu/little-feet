@@ -20,7 +20,7 @@ exports.main = async (params, context) => {
     if (!isSelf) return {
       authed: false
     }
-    const user = users.data[0]
+    const { _id, ...user } = users.data[0]
     const changed = !user.rawData || user.rawData !== params.rawData
     await db.collection('users')
       .where({
@@ -28,7 +28,7 @@ exports.main = async (params, context) => {
       })
       .update({
         data: {
-          user,
+          ...user,
           ...params
         }
       })

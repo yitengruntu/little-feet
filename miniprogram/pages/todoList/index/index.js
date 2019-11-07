@@ -20,8 +20,7 @@ Page({
     viewHeight: 0,
     activeTab: 'todo',
     safeBottom: 0,
-    authStatus: 0,
-    logged: false
+    authStatus: -1
   },
   async onLoad () {
     if (!wx.cloud) {
@@ -30,7 +29,8 @@ Page({
     const userInfo = await this.getUserInfo()
     if (userInfo) {
       await this.updateUserInfo(userInfo)
-      this.setData({ logged: true })
+    } else {
+      this.setData({ authStatus: 0 })
     }
     if (this.data.authStatus === 2) {
       this.setSafeBottom()
@@ -100,6 +100,7 @@ Page({
     for (const todo of list) {
       todo.createdTime = dayjs(todo.createdAt).format('MM-DD HH:mm')
     }
+    console.log('????')
     this.setData({
       list,
       noMore: data.length < 20,
