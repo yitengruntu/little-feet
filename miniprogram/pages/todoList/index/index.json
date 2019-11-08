@@ -1,6 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "老金待办清单",
+  "navigationBarTitleText": "待办清单",
   "enablePullDownRefresh": true,
   "onReachBottomDistance": 200
 }

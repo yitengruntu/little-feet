@@ -50,7 +50,7 @@ Page({
   },
   onShareAppMessage () {
     return {
-      title: '老金待办清单',
+      title: '待办清单',
       path: '/pages/todoList/index/index',
       imageUrl: '../../../images/todos-cover.png'
     }
