@@ -1,20 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/todoList/index/index",
-    "pages/cloudQuickStart/index/index",
-    "pages/cloudQuickStart/userConsole/userConsole",
-    "pages/cloudQuickStart/storageConsole/storageConsole",
-    "pages/cloudQuickStart/databaseGuide/databaseGuide",
-    "pages/cloudQuickStart/addFunction/addFunction",
-    "pages/cloudQuickStart/deployFunctions/deployFunctions",
-    "pages/cloudQuickStart/chooseLib/chooseLib",
-    "pages/cloudQuickStart/openapi/openapi",
-    "pages/cloudQuickStart/openapi/serverapi/serverapi",
-    "pages/cloudQuickStart/openapi/callback/callback",
-    "pages/cloudQuickStart/openapi/cloudid/cloudid",
-    "pages/cloudQuickStart/im/im",
-    "pages/cloudQuickStart/im/room/room"
+    "pages/todoList/index/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

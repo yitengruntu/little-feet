@@ -11,9 +11,6 @@ const gradientArr = [{
 const cardList = [{
   name: '待办清单',
   jumpUrl: '/pages/todoList/index/index'
-}, {
-  name: '云开发 QuickStart',
-  jumpUrl: '/pages/cloudQuickStart/index/index'
 }]
 
 for (const index in cardList) {
