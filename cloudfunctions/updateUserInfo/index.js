@@ -15,7 +15,8 @@ exports.main = async (params, context) => {
         openId
       })
       .get()
-    const isSelf = users.data.length > 0
+    console.log(users)
+    const isSelf = users.data.length && users.data[0].isAdmin
     console.log('isSelf', isSelf)
     if (!isSelf) return {
       authed: false

@@ -1,13 +1,14 @@
 const promisify = name => option =>
   new Promise((resolve, reject) =>
-    wx[name]({...option,
+    wx[name]({
+      ...option,
       success: resolve,
-      fail: reject,
+      fail: reject
     })
   )
 
 const pro = new Proxy(wx, {
-  get(target, prop) {
+  get (target, prop) {
     return promisify(prop)
   }
 })

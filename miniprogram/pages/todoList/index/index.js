@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import Toast from 'vant-weapp/toast/toast'
 import pro from '../../../utils/promisifyWx'
-const app = getApp()
+const PROJECT_NAME = 'todoList'
 
 /**
  *  authStatus
@@ -20,22 +20,19 @@ Page({
     viewHeight: 0,
     activeTab: 'todo',
     safeBottom: 0,
-    authStatus: -1
+    authStatus: -1,
+    isAdmin: false
   },
   async onLoad () {
-    if (!wx.cloud) {
+    if (!wx.cloud) return
+    const { permissions, isAdmin } = wx.getStorageSync('user') || {}
+    if (!permissions || !permissions.includes(PROJECT_NAME)) {
+      wx.redirectTo({ url: '/pages/login/login?expired=true' })
       return
     }
-    const userInfo = await this.getUserInfo()
-    if (userInfo) {
-      await this.updateUserInfo(userInfo)
-    } else {
-      this.setData({ authStatus: 0 })
-    }
-    if (this.data.authStatus === 2) {
-      this.setSafeBottom()
-      this.getList()
-    }
+    this.setData({ isAdmin })
+    this.setSafeBottom()
+    this.getList()
   },
   onPullDownRefresh () {
     pro.stopPullDownRefresh()
@@ -76,7 +73,7 @@ Page({
     })
   },
   async setSafeBottom () {
-    const { screenHeight, safeArea: { bottom }} = await pro.getSystemInfo()
+    const { screenHeight, safeArea: { bottom } } = await pro.getSystemInfo()
     this.setData({
       safeBottom: screenHeight - bottom
     })
@@ -91,7 +88,8 @@ Page({
       name: 'getTodoList',
       data: {
         offset,
-        all: this.data.activeTab === 'all'
+        all: this.data.activeTab === 'all',
+        isAdmin: this.data.isAdmin
       }
     })
     const list = offset
@@ -100,7 +98,6 @@ Page({
     for (const todo of list) {
       todo.createdTime = dayjs(todo.createdAt).format('MM-DD HH:mm')
     }
-    console.log('????')
     this.setData({
       list,
       noMore: data.length < 20,
@@ -131,22 +128,14 @@ Page({
     this.getList()
   },
   onInputChange (e) {
-    console.log(e)
     this.setData({
       inputValue: e.detail.value
     })
   },
   onTabChange (e) {
-    console.log('tab change', e.detail)
     this.setData({
       activeTab: e.detail
     })
     this.getList()
-  },
-  onGetUserInfo (e) {
-    console.log(e.detail)
-    const { rawData, userInfo } = e.detail
-    if (!userInfo) return
-    this.updateUserInfo({ rawData, ...userInfo })
   }
 })

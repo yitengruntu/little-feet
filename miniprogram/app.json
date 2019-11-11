@@ -1,14 +1,15 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/todoList/index/index"
+    "pages/todoList/index/index",
+    "pages/login/login",
+    "pages/index/index"
   ],
   "window": {
-    "backgroundColor": "#F6F6F6",
+    "backgroundColor": "#282a36",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarBackgroundColor": "#282a36",
     "navigationBarTitleText": "Little Feet Lab",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json",
   "usingComponents": {

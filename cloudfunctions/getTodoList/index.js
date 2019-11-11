@@ -1,5 +1,5 @@
 const cloud = require('wx-server-sdk')
-
+const { admin } = require('./admin.json')
 cloud.init({
   env: cloud.DYNAMIC_CURRENT_ENV
 })
@@ -8,11 +8,13 @@ const db = cloud.database()
 const _ = db.command
 // console.log('db init----->', db)
 
-exports.main = async ({ offset, all }, context) => {
-  let { OPENID, APPID, UNIONID } = cloud.getWXContext()
-  console.log(OPENID, APPID, UNIONID)
+exports.main = async ({ offset, all, isAdmin }, context) => {
+  let { OPENID } = cloud.getWXContext()
   try {
-    const params = {}
+    const createdBy = isAdmin
+      ? _.in(admin)
+      : OPENID
+    const params = { createdBy }
     if (!all) params.done = false
     // 获取本次请求的 todo
     const todos = await db.collection('todos')
@@ -31,13 +33,10 @@ exports.main = async ({ offset, all }, context) => {
       .get()
     // 将头像地址写入 todo
     todos.data.map(todo => {
-      console.log(users.data)
       const targetUser = users.data.find(user => {
-        console.log(user, user.openId, todo.createdBy)
         return user.openId === todo.createdBy
       })
       todo.avatarUrl = targetUser && targetUser.avatarUrl
-      console.log(targetUser, todo)
       return todo
     })
     return todos

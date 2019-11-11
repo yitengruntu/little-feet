@@ -1,0 +1,12 @@
+<view class="login-wrapper">
+  <view class="login-container" wx:if="{{ inited }}">
+    <van-button
+      open-type="getUserInfo"
+      color="#ff79c6"
+      bind:getuserinfo="onGetUserInfo"
+      loading="{{ loading }}"
+      loading-text="登录中"
+    > 点击登录
+    </van-button>
+  </view>
+</view>
