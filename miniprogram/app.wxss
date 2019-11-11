@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-} 
+}
 
 button {
   background: initial;
@@ -20,7 +20,19 @@ button::after{
 
 
 page {
-  background: #f6f6f6;
+  --dracula-background: #282a36;
+  --dracula-current-line: #44475a;
+  --dracula-selection: #44475a;
+  --dracula-foreground: #f8f8f2;
+  --dracula-comment: #6272a4;
+  --dracula-cyan: #8be9fd;
+  --dracula-green: #50fa7b;
+  --dracula-orange: #ffb86c;
+  --dracula-pink: #ff79c6;
+  --dracula-purple: #bd93f9;
+  --dracula-red: #ff5555;
+  --dracula-yellow: #f1fa8c;
+  background: var(--dracula-background);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -153,4 +165,41 @@ page {
   font-size: 24rpx;
   line-height: 36rpx;
   word-break: break-all;
+}
+
+.dracula-cell {
+  background: var(--dracula-current-line) !important;
+}
+
+.dracula-cell:after {
+  border-bottom-color: var(--dracula-foreground) !important;
+}
+
+.dracula-cell .van-cell__value {
+  color: var(--dracula-purple);
+}
+
+.dracula-cell-group:after {
+  border-color: var(--dracula-foreground) !important;
+}
+
+.dracula-tabbar {
+  background: var(--dracula-background) !important;
+}
+
+.dracula-tabbar:after {
+  border-color: var(--dracula-foreground) !important;
+}
+
+.dracula-tabbar-item {
+  color: var(--dracula-foreground) !important;
+}
+
+.dracula-tabbar-item.van-tabbar-item--active {
+  color: var(--dracula-green) !important;
+}
+
+.van-toast {
+  background-color: rgba(68, 71, 90, .88) !important;
+  color: var(--dracula-pink) !important;
 }

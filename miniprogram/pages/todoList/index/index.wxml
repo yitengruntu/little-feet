@@ -1,5 +1,5 @@
 <view>
-  <view class="input-wrapper">
+  <view class="input-wrapper dracula">
     <view class="input-container">
       <input bindinput="onInputChange" maxlength="32" value="{{ inputValue }}" bindconfirm="addTodo" />
       <button class="add-btn" bindtap="addTodo">→</button>
@@ -9,8 +9,8 @@
     <view class="loading-container">
       <view class="loading">下拉刷新</view>
     </view>
-    <van-cell-group>
-      <van-cell wx:for="{{ list }}" wx:key="{{ index }}" value="{{ item.createdTime }}" value-class="no-flex-container">
+    <van-cell-group custom-class="dracula-cell-group">
+      <van-cell wx:for="{{ list }}" wx:key="{{ index }}" value="{{ item.createdTime }}" value-class="no-flex-container" custom-class="dracula-cell">
         <view slot="title" class="title-container">
           <view wx:if="{{ !item.done }}" class="circle" bindtap="finishTodo" id="{{ item._id }}"></view>
           <van-icon class="checked" wx:else name="success" />
@@ -21,8 +21,8 @@
     </van-cell-group>
   </view>
   <van-toast id="van-toast" />
-  <van-tabbar active="{{ activeTab }}" bind:change="onTabChange">
-    <van-tabbar-item icon="records" name="todo">待办</van-tabbar-item>
-    <van-tabbar-item icon="completed" name="all">全部</van-tabbar-item>
+  <van-tabbar active="{{ activeTab }}" bind:change="onTabChange" custom-class="dracula-tabbar">
+    <van-tabbar-item custom-class="dracula-tabbar-item" icon="records" name="todo">待办</van-tabbar-item>
+    <van-tabbar-item custom-class="dracula-tabbar-item" icon="completed" name="all">全部</van-tabbar-item>
   </van-tabbar>
 </view>

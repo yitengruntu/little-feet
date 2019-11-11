@@ -7,18 +7,23 @@
   top: 0;
   left: 0;
   z-index: 10;
-  background: #f6f6f6;
+  background: var(--dracula-background);
   right: 0;
 }
 
 .input-container {
-  background: #ffffff;
+  background: var(--dracula-current-line);
   margin: 30rpx;
   border-radius: 4px;
   height: 44px;
   padding: 24rpx 100rpx 24rpx 24rpx;
   box-sizing: border-box;
   position: relative;
+}
+
+input {
+  caret-color: var(--dracula-foreground);
+  color: var(--dracula-foreground);
 }
 
 .scroll-container {
@@ -34,7 +39,7 @@
 }
 
 .loading {
-  color: #999;
+  color: var(--dracula-purple);
 }
 
 .add-btn {
@@ -42,6 +47,7 @@
   top: 50%;
   right: 5rpx;
   transform: translateY(-50%);
+  color: var(--dracula-foreground);
 }
 
 .no-flex-container {
@@ -51,6 +57,7 @@
 .title-container {
   display: flex;
   align-items: center;
+  color: var(--dracula-cyan);
 }
 
 .circle {
@@ -64,13 +71,13 @@
 .checked {
   font-size: 16px;
   margin-right: 8px;
-  color: #1aad19;
+  color: var(--dracula-green);
   line-height: 24px;
 }
 
 .invalid {
   text-decoration: line-through;
-  color: #999;
+  color: var(--dracula-comment);
 }
 
 .avatar {

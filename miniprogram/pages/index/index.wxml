@@ -2,7 +2,7 @@
   <view class="title">Little Feet</view>
   <van-row gutter="20">
     <van-col span="12" wx:for="{{ cardList }}" wx:key="index" wx:for-item="item">
-      <navigator url="{{ item.jumpUrl }}" class="index-card" style="background: linear-gradient(to right, {{ item.start }}, {{ item.end }})">
+      <navigator url="{{ item.jumpUrl }}" class="index-card">
         {{item.name}}
       </navigator>
     </van-col>

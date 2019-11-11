@@ -3,14 +3,6 @@ import Toast from 'vant-weapp/toast/toast'
 import pro from '../../../utils/promisifyWx'
 const PROJECT_NAME = 'todoList'
 
-/**
- *  authStatus
- *  0: 没有登录
- *  1: 没有权限
- *  2: 成功
- *  3: loading
- */
-
 Page({
   data: {
     list: [],

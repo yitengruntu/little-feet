@@ -6,13 +6,14 @@
   text-align: center;
   font-size: 36rpx;
   font-weight: bold;
+  color: var(--dracula-foreground);
 }
 
 .index-card {
   padding: 24rpx;
-  background: #333;
+  background: var(--dracula-purple);
   height: 160rpx;
-  color: #fff;
+  color: var(--dracula-foreground);
   border-radius: 4px;
   margin-top: 36rpx;
 }

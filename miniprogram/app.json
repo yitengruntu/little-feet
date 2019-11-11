@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/login/login",
-    "pages/todoList/index/index",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/todoList/index/index"
   ],
   "window": {
     "backgroundColor": "#282a36",
