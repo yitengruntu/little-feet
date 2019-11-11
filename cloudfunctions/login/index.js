@@ -17,8 +17,8 @@ exports.main = async (params, context) => {
       .get()
     const isRegistered = users.data.length > 0
     if (isRegistered) {
-      let permissions = []
       const user = users.data[0]
+      let permissions = users.permissions || []
       if (user.isAdmin) {
         permissions = permissions_enum
         // 更新权限字段 ->
@@ -36,15 +36,17 @@ exports.main = async (params, context) => {
         isAdmin: user.isAdmin
       }
     } else {
-      // TODO: 存入 users -> 分配基础权限
-        // 判断不授权不给登录
-      await db.collection('users').add({
-        openId,
-        permissions: ['todListo'],
-        ...params
+      // 判断不授权不给登录
+      const result = await db.collection('users').add({
+        data: {
+          openId,
+          permissions: ['todoList'],
+          ...params
+        }
       })
       return {
-        permissions: ['todoList']
+        permissions: ['todoList'],
+        result
       }
     }
   } catch (e) {

@@ -11,7 +11,8 @@ const _ = db.command
 exports.main = async ({ offset, all, isAdmin }, context) => {
   let { OPENID } = cloud.getWXContext()
   try {
-    const createdBy = isAdmin
+    const authed = admin.includes(OPENID)
+    const createdBy = isAdmin && authed
       ? _.in(admin)
       : OPENID
     const params = { createdBy }

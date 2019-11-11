@@ -1,6 +1,7 @@
 <view class="login-wrapper">
   <view class="login-container" wx:if="{{ inited }}">
     <van-button
+      wx:if="{{ !noAuth }}"
       open-type="getUserInfo"
       color="#ff79c6"
       bind:getuserinfo="onGetUserInfo"
@@ -8,5 +9,7 @@
       loading-text="登录中"
     > 点击登录
     </van-button>
+    <van-icon wx:if="{{ noAuth }}" name="smile" />
+    <view wx:if="{{ noAuth }}">没有权限</view>
   </view>
 </view>

@@ -3,7 +3,8 @@ import pro from '../../utils/promisifyWx'
 Page({
   data: {
     inited: false,
-    loading: false
+    loading: false,
+    noAuth: false
   },
   async onLoad (e) {
     if (e.expired) wx.removeStorageSync('user') // 进了项目页面发现失效了退回到此页，则清除缓存重新登录
@@ -19,7 +20,7 @@ Page({
     }
     this.handleRedirect(permissions)
     // 3. 展示页面
-    if (!permissions) {
+    if (!permissions || permissions.length === 0) {
       this.setData({
         inited: true
       })
@@ -34,11 +35,11 @@ Page({
     return null
   },
   async login (data) {
-    const { result } = await wx.cloud.callFunction({
+    const res = await wx.cloud.callFunction({
       name: 'login',
       data
     })
-    return result
+    return res.result
   },
   async handleLoginProcess (userInfo) {
     const data = await this.login(userInfo)
@@ -47,13 +48,20 @@ Page({
       key: 'user',
       data
     })
-    return data.permissions
+    return data && data.permissions
   },
   async onGetUserInfo (e) {
     const { rawData, userInfo } = e.detail
     if (!userInfo) return
     this.setData({ loading: true })
     const permissions = await this.handleLoginProcess({ rawData, ...userInfo })
+    if (!permissions || permissions.length === 0) {
+      this.setData({
+        loading: false,
+        noAuth: true
+      })
+      return
+    }
     this.handleRedirect(permissions)
   },
   handleRedirect (permissions) {

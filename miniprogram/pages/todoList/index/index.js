@@ -60,18 +60,6 @@ Page({
     }
     return null
   },
-  async updateUserInfo (userInfo) {
-    this.setData({
-      authStatus: 3
-    })
-    const { result: { authed } } = await wx.cloud.callFunction({
-      name: 'updateUserInfo',
-      data: userInfo
-    })
-    this.setData({
-      authStatus: authed ? 2 : 1
-    })
-  },
   async setSafeBottom () {
     const { screenHeight, safeArea: { bottom } } = await pro.getSystemInfo()
     this.setData({
