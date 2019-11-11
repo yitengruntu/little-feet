@@ -172,15 +172,15 @@ page {
 }
 
 .dracula-cell:after {
-  border-bottom-color: var(--dracula-foreground) !important;
+  border-bottom-color: var(--dracula-purple) !important;
 }
 
 .dracula-cell .van-cell__value {
-  color: var(--dracula-purple);
+  color: var(--dracula-yellow);
 }
 
 .dracula-cell-group:after {
-  border-color: var(--dracula-foreground) !important;
+  border-color: var(--dracula-purple) !important;
 }
 
 .dracula-tabbar {
@@ -188,7 +188,7 @@ page {
 }
 
 .dracula-tabbar:after {
-  border-color: var(--dracula-foreground) !important;
+  border-color: var(--dracula-purple) !important;
 }
 
 .dracula-tabbar-item {
